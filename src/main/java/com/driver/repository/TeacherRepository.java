@@ -34,4 +34,10 @@ public class TeacherRepository {
         }
         return null;
     }
+
+    public void deletedAllTeachers() {
+        for(String teacherName : teacherDb.keySet()){
+            teacherDb.remove(teacherDb.get(teacherName));
+        }
+    }
 }

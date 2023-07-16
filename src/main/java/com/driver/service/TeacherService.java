@@ -30,4 +30,8 @@ public class TeacherService {
             return null;
         return teacherRepository.deleteTeacherByName(teacher);
     }
+
+    public void deleteAllTeachers() {
+        teacherRepository.deletedAllTeachers();
+    }
 }
