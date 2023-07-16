@@ -20,4 +20,10 @@ public class TeacherRepository {
         teacherDb.put(teacher.getName(), teacher);
         return "New teacher added successfully";
     }
+
+    public Teacher getTeacherByName(String name) {
+        if (teacherDb.containsKey(name))
+            return teacherDb.get(name);
+        return null;
+    }
 }

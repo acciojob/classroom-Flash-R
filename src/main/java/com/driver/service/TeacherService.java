@@ -18,4 +18,10 @@ public class TeacherService {
         }
 
     }
+
+    public Teacher getTeacherByName(String name) {
+        if(name == null)
+            return null;
+        return teacherRepository.getTeacherByName(name);
+    }
 }
