@@ -79,8 +79,10 @@ public class StudentController {
 
     @DeleteMapping("/delete-teacher-by-name")
     public ResponseEntity<String> deleteTeacherByName(@RequestParam String teacher){
-
-        return new ResponseEntity<>(teacher + " removed successfully", HttpStatus.CREATED);
+        String deleted = teacherService.deleteTeacherByName(teacher);
+        if(deleted != null)
+            return new ResponseEntity<>(teacher + " removed successfully", HttpStatus.CREATED);
+        return new ResponseEntity<>("Teacher Not Found", HttpStatus.NOT_FOUND);
     }
     @DeleteMapping("/delete-all-teachers")
     public ResponseEntity<String> deleteAllTeachers(){

@@ -26,4 +26,12 @@ public class TeacherRepository {
             return teacherDb.get(name);
         return null;
     }
+
+    public String deleteTeacherByName(String teacher) {
+        if(teacherDb.containsKey(teacher)) {
+            Teacher removedTeacher = teacherDb.remove(teacher);
+            return removedTeacher.getName();
+        }
+        return null;
+    }
 }

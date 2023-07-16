@@ -24,4 +24,10 @@ public class TeacherService {
             return null;
         return teacherRepository.getTeacherByName(name);
     }
+
+    public String deleteTeacherByName(String teacher) {
+        if(teacher == null)
+            return null;
+        return teacherRepository.deleteTeacherByName(teacher);
+    }
 }
