@@ -65,4 +65,12 @@ public class StudentRepository {
         }
         return studentList;
     }
+
+    public List<String> getAllStudents() {
+        List<String> students = new ArrayList<>();
+        for(String student : studentDb.keySet()){
+            students.add(studentDb.get(student).getName());
+        }
+        return students;
+    }
 }

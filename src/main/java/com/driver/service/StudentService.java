@@ -46,4 +46,8 @@ public class StudentService {
             return new ArrayList<>();
         return studentRepository.getStudentByTeacherName(teacher);
     }
+
+    public List<String> getAllStudents() {
+        return studentRepository.getAllStudents();
+    }
 }
