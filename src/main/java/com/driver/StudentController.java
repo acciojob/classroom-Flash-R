@@ -2,6 +2,8 @@ package com.driver;
 
 import java.util.List;
 
+import com.driver.service.StudentService;
+import com.driver.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,16 +21,26 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("students")
 public class StudentController {
 
+    @Autowired
+    StudentService studentService;
+
+    @Autowired
+    TeacherService teacherService;
+
     @PostMapping("/add-student")
     public ResponseEntity<String> addStudent(@RequestBody Student student){
 
-        return new ResponseEntity<>("New student added successfully", HttpStatus.CREATED);
+        String addedStudent = studentService.addStudent(student);
+
+        return new ResponseEntity<>(addedStudent, HttpStatus.CREATED);
     }
 
     @PostMapping("/add-teacher")
     public ResponseEntity<String> addTeacher(@RequestBody Teacher teacher){
 
-        return new ResponseEntity<>("New teacher added successfully", HttpStatus.CREATED);
+        String addedTeacher = teacherService.addTeacher(teacher);
+
+        return new ResponseEntity<>(addedTeacher, HttpStatus.CREATED);
     }
 
     @PutMapping("/add-student-teacher-pair")
