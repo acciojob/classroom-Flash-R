@@ -44,6 +44,7 @@ public class StudentRepository {
             studentTeacherPairDb.put(teacher, new ArrayList<>());
 //        if the teacher already has a student add more students to him
         studentTeacherPairDb.get(teacher).add(studentDb.get(student));
+        teacherRepository.teacherDb.get(teacher).setNumberOfStudents(studentTeacherPairDb.get(teacher).size());
 
         return "New student-teacher pair added successfully";
 
