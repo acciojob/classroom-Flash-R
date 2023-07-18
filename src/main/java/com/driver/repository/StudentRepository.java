@@ -18,7 +18,7 @@ public class StudentRepository {
     @Autowired
     TeacherRepository teacherRepository;
     Map<String, Student> studentDb = new HashMap<>();
-    Map<String, List<Student>> studentTeacherPairDb = new HashMap<>();
+    Map<String, List<String>> studentTeacherPairDb = new HashMap<>();
     public String addStudent(Student student) {
         if(student == null)
             throw new studentIsNull("Please add Student Attributes");
@@ -43,7 +43,7 @@ public class StudentRepository {
 //            create an entry and an empty arraylist to store the students assigned
             studentTeacherPairDb.put(teacher, new ArrayList<>());
 //        if the teacher already has a student add more students to him
-        studentTeacherPairDb.get(teacher).add(studentDb.get(student));
+        studentTeacherPairDb.get(teacher).add(student);
         teacherRepository.teacherDb.get(teacher).setNumberOfStudents(studentTeacherPairDb.get(teacher).size());
 
         return "New student-teacher pair added successfully";
@@ -60,9 +60,9 @@ public class StudentRepository {
          List<String> studentList = new ArrayList<>();
         if(!studentTeacherPairDb.containsKey(teacher))
             return new ArrayList<>();
-        List<Student> list = studentTeacherPairDb.get(teacher);
-        for (Student st: list ) {
-            studentList.add(st.getName());
+        List<String> list = studentTeacherPairDb.get(teacher);
+        for (String st: list ) {
+            studentList.add(st);
         }
         return studentList;
     }

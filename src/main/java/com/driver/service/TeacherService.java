@@ -25,10 +25,8 @@ public class TeacherService {
         return teacherRepository.getTeacherByName(name);
     }
 
-    public String deleteTeacherByName(String teacher) {
-        if(teacher == null)
-            return null;
-        return teacherRepository.deleteTeacherByName(teacher);
+    public void deleteTeacherByName(String teacher) {
+        teacherRepository.deleteTeacherByName(teacher);
     }
 
     public void deleteAllTeachers() {
